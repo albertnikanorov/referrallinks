@@ -1,0 +1,74 @@
+<?php
+
+Error_Reporting(E_ALL & ~E_NOTICE);
+
+$date = date("Y-m-d");
+
+$referer = $_SERVER['HTTP_REFERER'];
+
+$page = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+
+if (stristr($referer, 'yandex.ru')) {
+
+$search = 'text=';
+
+$crawler = 'Yandex';
+
+}
+
+if (stristr($referer, 'rambler.ru')) {
+
+$search = 'words=';
+
+$crawler = 'Rambler';
+
+}
+
+if (stristr($referer, 'google.com')) {
+
+$search = 'q=';
+
+$crawler = 'Google';
+
+}
+
+if (stristr($referer, 'go.mail.ru')) {
+
+$search = 'q=';
+
+$crawler = 'Mail';
+
+}
+
+if (isset($crawler)) {
+
+
+$phrase = urldecode($referer);
+
+eregi($search.'([^&]*)', $phrase.'&', $phrase2);
+
+$phrase2 = $phrase2[1];
+
+$pochta = "ВАША_ПОЧТА@ВАША_ПОЧТА.RU";
+
+$msg = "Источник трафика: ".$crawler.";\r\n Запрос: ".$phrase2.";\r\n Дата: ".$date.";\r\n Текущая страница: ".$page.";";
+
+mail($pochta, "НОВЫЙ ПОСЕТИТЕЛЬ САЙТА", $msg);
+
+}
+
+else
+
+{
+
+$phrase = urldecode($referer);
+
+$pochta = " ВАША_ПОЧТА@ВАША_ПОЧТА.RU ";
+
+$msg = "\r\nИсточник трафика: ".$phrase.";\r\n Дата: ".$date.";\r\n Текущая страница: ".$page.";";
+
+mail($pochta, "НОВЫЙ ПОСЕТИТЕЛЬ САЙТА", $msg);
+
+}
+
+?>
