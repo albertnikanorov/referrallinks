@@ -49,7 +49,7 @@ eregi($search.'([^&]*)', $phrase.'&', $phrase2);
 
 $phrase2 = $phrase2[1];
 
-$pochta = "ВАША_ПОЧТА@ВАША_ПОЧТА.RU";
+$pochta = "wallmarkets@gmail.com";
 
 $msg = "Источник трафика: ".$crawler.";\r\n Запрос: ".$phrase2.";\r\n Дата: ".$date.";\r\n Текущая страница: ".$page.";";
 
@@ -63,7 +63,7 @@ else
 
 $phrase = urldecode($referer);
 
-$pochta = " ВАША_ПОЧТА@ВАША_ПОЧТА.RU ";
+$pochta = " wallmarkets@gmail.com ";
 
 $msg = "\r\nИсточник трафика: ".$phrase.";\r\n Дата: ".$date.";\r\n Текущая страница: ".$page.";";
 
